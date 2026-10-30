@@ -33,6 +33,7 @@ class OdometryNode:
             Float64MultiArray,
             self.callback_left_motors
         )
+        
         self.right_sub_ = rospy.Subscriber(
             "/drive_system_right_motors_feedbacks",
             Float64MultiArray,
@@ -40,8 +41,6 @@ class OdometryNode:
         )
         self.imu_sub_ = rospy.Subscriber("/imu1/data", Imu, self.callback_imu)
 
-
-        self.tf_broadcaster_ = tf.TransformBroadcaster()
 
         self.timer_ = rospy.Timer(rospy.Duration.from_sec(0.05), self.timer_callback)
 
